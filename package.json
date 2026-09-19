@@ -1,0 +1,18 @@
+{
+  "name": "stickman-duel-cache",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Captures the Stickman Duel game URL from the Google Sites embed and serves it locally.",
+  "scripts": {
+    "start": "node server.js",
+    "capture": "node capture.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "playwright": "^1.55.0"
+  }
+}

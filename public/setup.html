@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Preparing Stickman Duel</title>
+    <style>
+      body { display: grid; min-height: 100vh; place-items: center; margin: 0; background: #111; color: #eee; font: 16px system-ui, sans-serif; }
+      main { max-width: 32rem; padding: 2rem; text-align: center; }
+      button { padding: .75rem 1rem; cursor: pointer; }
+      #message { min-height: 1.5rem; color: #aaa; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Stickman Duel is being prepared</h1>
+      <p id="message">The headless browser is opening the source embed. This can take a moment.</p>
+      <button id="refresh" type="button">Try again</button>
+    </main>
+    <script>
+      const message = document.getElementById('message');
+      document.getElementById('refresh').addEventListener('click', async () => {
+        message.textContent = 'Capturing the game URL...';
+        const response = await fetch('/api/refresh', { method: 'POST' });
+        if (response.ok) location.reload();
+        else message.textContent = (await response.json()).error || 'Capture failed.';
+      });
+    </script>
+  </body>
+</html>
